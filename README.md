@@ -12,17 +12,13 @@ y carga de partida.
 para windows:
 ejecutarlo en DEV-C++
 
-en la terminal misma:
-buscaminas.exe
+o escribir buscaminas.exe ne la terminal cmd
 
 debes estar en la misma carpeta donde esta el .exe.
 
-tambien para :
-
-.\buscaminas.exe
 
 para linux:
-g++ -o buscaminas main.cpp
+g++ -o buscaminas main.cpp <-- en la terminal 
 
-si no sirve el primer comando:
-./buscaminas
+si no sirve el primer comando: 
+./buscaminas <-- tambien en la terminal
