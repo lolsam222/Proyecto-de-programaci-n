@@ -10,15 +10,17 @@ y carga de partida.
 
 ## Compilación y ejecución
 para windows:
-ejecutarlo en DEV-C++
+ejecutarlo en DEV-C++.
 
-o escribir buscaminas.exe en la terminal cmd
+o escribir buscaminas.exe en la terminal cmd.
 
 debes estar en la misma carpeta donde esta el .exe.
 
 
 para linux:
-g++ -o buscaminas main.cpp <-- en la terminal 
+g++ -o buscaminas main.cpp <-- en la terminal. 
 
 si no sirve el primer comando: 
-./buscaminas <-- tambien en la terminal
+./buscaminas <-- tambien en la terminal.
+
+debes estar en la carpeta donde se hallá el ejecutable.
