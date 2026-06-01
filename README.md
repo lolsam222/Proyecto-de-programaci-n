@@ -12,7 +12,7 @@ y carga de partida.
 para windows:
 ejecutarlo en DEV-C++
 
-o escribir buscaminas.exe ne la terminal cmd
+o escribir buscaminas.exe en la terminal cmd
 
 debes estar en la misma carpeta donde esta el .exe.
 
