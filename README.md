@@ -11,13 +11,18 @@ y carga de partida.
 ## Compilación y ejecución
 para windows:
 ejecutarlo en DEV-C++
+
 en la terminal misma:
-estando en la carpeta donde esta el ejecutable.
 buscaminas.exe
-tambien para powershell
+
+debes estar en la misma carpeta donde esta el .exe.
+
+tambien para :
+
 .\buscaminas.exe
 
 para linux:
 g++ -o buscaminas main.cpp
-si no sirve el primero:
+
+si no sirve el primer comando:
 ./buscaminas
