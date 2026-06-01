@@ -204,11 +204,10 @@ bool cargarpartida(){
 				bandera[f][c]=tpm;
 			}
 		}
+	}
 	partida.close();
 	cout<<"partida cargada.\n";
 	return true;
-	}
-	
 }
 
 void mostrarpuntuacion(){
