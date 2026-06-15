@@ -7,7 +7,7 @@
 #include <sstream>    
 #include <fstream>    
 #include <cstdlib>  //<--este es para randomizar casillas y poner minas
-#include <ctime>    //<-- para el tiempo 
+#include <ctime>    //<-- para tener la hora y usarlo para "randomizar las casillas" 
 
 using namespace std;
 // estos son variables globales que se estaran usando a lo largo del codigo
@@ -23,13 +23,7 @@ void configurarmatrices (){
 	tablero.assign(filas,vector<int>(columnas, 0));
 	revelado.assign(filas, vector<bool>(columnas, false));
     bandera.assign(filas, vector<bool>(columnas, false));
-    //for (int f = 0; f < filas; f++) {		<-- esta es otra opción que vi para poder asignar matrices a los vectores por si el .assign no se puede usar. (porfis dejeme usarlo)
-    //vector<int> fila;
-    //for (int c = 0; c < columnas; c++) {
-    //    fila.push_back(0);
-    //}
-    //tablero.push_back(fila);
-	
+    
 }
 
 int localizarminas(int f, int c){ //filas y columnas; voy a esta usando f o c para referirme a las filas y columnas una gran parte del codigo por si se ve mucho que uso sinonimos como df nf,o primerf d:
@@ -185,6 +179,10 @@ bool cargarpartida(){
 	}else if(partida.is_open()){
 		partida>>filas>>columnas>>totalMinas;
 		configurarmatrices();
+		juegoTerminado = false;  // <-- esto es para evitar se corrompa la partida debido a que la variable vicoria o derrota queda en true
+								 // 	generando que la partida guardada se corrompa y cambie los valores de cada casilla para evitarlo reseteo
+								 //		las variables de victoria y derrota.
+		victoria = false;
 		for(int f=0;f<filas;f++){ //<-- para cargar el tablero
 			for(int c=0;c<columnas;c++){
 				partida>>tablero[f][c];			
@@ -260,10 +258,10 @@ string seleciodedificultad(){
 	}
 }
 
-void juego(string nivel){
+void juego(string nivel,bool yaCargado= false){
 	juegoTerminado=false;
 	victoria=false;
-	bool tablerogenerado= false;
+	bool tablerogenerado= yaCargado;
 	int movimientos = 0;
 	while(!juegoTerminado){
 		mostrartablero();
@@ -277,7 +275,11 @@ void juego(string nivel){
 		cin>>accion;
 		
 		if(accion=="3"){//<-- inicie en desorden si, pero que tortura quedarme estancado tratando de ver como hacer la acción 1
-						// asi que preferi iniciar por los más faciles primero ya luego me torturo (una disculpa a los que tiene toc).
+						// asi que preferi iniciar por los más faciles primero ya luego me torturo (una disculpa a los que tienen toc).
+			if(!tablerogenerado){
+				cout<<"debes revelar al menos una casilla para guardar";
+				continue;
+			}
 			guardarpartida();
 			continue;
 		}
@@ -362,7 +364,7 @@ int main(){
 			juego(nivel);
 		}else if(opcion=="2"){
 			if(cargarpartida()){
-				juego("carga");
+				juego("carga", true); //<-- el tre para no tener que llamar la función generar tablero y que no corrompa la partida
 			}
 		}else if(opcion=="3"){
 			mostrarpuntuacion();
